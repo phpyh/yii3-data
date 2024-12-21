@@ -28,12 +28,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Typhoon\\Template\\": "src/"
+            "Yii3DataStream\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Typhoon\\Template\\": "tests/"
+            "Yii3DataStream\\": "tests/"
         }
     },
     "config": {

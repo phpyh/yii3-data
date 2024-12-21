@@ -30,7 +30,6 @@
 
     <plugins>
         <pluginClass class="Psalm\PhpUnitPlugin\Plugin"/>
-        <pluginClass class="Typhoon\CheckVisibilityPsalmPlugin\CheckVisibilityPlugin"/>
     </plugins>
 
     <ignoreExceptions>
