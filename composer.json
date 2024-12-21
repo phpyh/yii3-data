@@ -29,7 +29,10 @@
     "autoload": {
         "psr-4": {
             "Yii3DataStream\\": "src/"
-        }
+        },
+        "files": [
+            "src/Data/ensureCorrectFieldFormat.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
