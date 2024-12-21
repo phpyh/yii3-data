@@ -12,9 +12,11 @@ namespace Yii3DataStream\Data;
 final readonly class PropertyFieldFormatter implements FieldFormatter
 {
     /**
+     * @param class-string<TEntity> $_class
      * @param non-empty-string $property
      */
     public function __construct(
+        string $_class,
         private string $property,
     ) {}
 

@@ -1,0 +1,23 @@
+{% extends 'template.twig' %}
+
+{% block body %}
+    <h1>{{ entity_config.name }}</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            {% for field in entity_config.fields %}
+                <th>{{ field.name }}</th>
+            {% endfor %}
+        </tr>
+        </thead>
+        <tbody>
+        {% for entity in entity_config.repository.query() %}
+            <tr>
+                {% for field in entity_config.fields %}
+                    <td>{{ field.formatter.format(entity) }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
