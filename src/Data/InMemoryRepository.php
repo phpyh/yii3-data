@@ -18,12 +18,8 @@ final readonly class InMemoryRepository implements Repository
         private array $entities,
     ) {}
 
-    public function query(int $offset = 0, ?int $limit = null, Sort $sort = new Sort()): iterable
+    public function query(Sort $sort = new Sort(), int $offset = 0, ?int $limit = null): iterable
     {
-        return \array_slice(
-            $this->entities,
-            $offset,
-            $limit,
-        );
+        return \array_slice($this->entities, $offset, $limit);
     }
 }
