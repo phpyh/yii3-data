@@ -15,14 +15,14 @@ require_once __DIR__ . '/../../vendor/autoload.php';
 
 $userProfiles = new InMemoryRepository([
     new UserProfile(1, 'vudaltsov', 'Валентин', 'Удальцов'),
-    new UserProfile(2, 'agagarin', 'Алексей', 'Гагарин'),
+    new UserProfile(2, 'roxblnfk', 'Алексей', 'Гагарин'),
 ]);
 $admin = new Admin([
     new EntityConfig('User Profile', $userProfiles, [
-        new FieldConfig('ID', new PropertyFieldFormatter(UserProfile::class, 'id')),
+        FieldConfig::property(UserProfile::class, 'id'),
         new FieldConfig('Никнейм', new PropertyFieldFormatter(UserProfile::class, 'nickname')),
         new FieldConfig('Имя', new CallableFieldFormatter(
-            static fn(UserProfile $profile): string => \sprintf('%s %s', $profile->firstName, $profile->lastName),
+            static fn(UserProfile $profile): string => "{$profile->firstName} {$profile->lastName}",
         )),
     ]),
 ]);

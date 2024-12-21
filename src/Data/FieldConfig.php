@@ -11,6 +11,21 @@ namespace Yii3DataStream\Data;
 final readonly class FieldConfig
 {
     /**
+     * @template TObject of object
+     * @param class-string<TObject> $class
+     * @param non-empty-string $name
+     * @return self<TObject>
+     */
+    public static function property(string $class, string $name, Sort $sort = new Sort()): self
+    {
+        return new self(
+            name: $name,
+            formatter: new PropertyFieldFormatter($class, $name),
+            sort: $sort,
+        );
+    }
+
+    /**
      * @param non-empty-string $name
      * @param FieldFormatter<TEntity> $formatter
      */
