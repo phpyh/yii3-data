@@ -6,4 +6,7 @@ on:
 jobs:
   check:
     uses: typhoon-php/.github/.github/workflows/check.yml@main
+    with:
+      php_versions: '["8.3"]'
+      dependencies: '["locked"]'
     secrets: inherit
