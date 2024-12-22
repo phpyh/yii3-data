@@ -8,10 +8,10 @@ namespace Yii3DataStream\Data;
  * @api
  * @template TEntity of array|object
  */
-interface FieldFormatter
+interface EntityValueProvider
 {
     /**
      * @param TEntity $entity
      */
-    public function format(array|object $entity): null|bool|int|float|string|\Stringable;
+    public function getValue(array|object $entity): mixed;
 }

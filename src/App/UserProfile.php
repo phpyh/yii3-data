@@ -20,5 +20,6 @@ final readonly class UserProfile
         public string $nickname,
         public string $firstName,
         public string $lastName,
+        public \DateTimeImmutable $birthday,
     ) {}
 }

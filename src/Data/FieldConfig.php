@@ -20,18 +20,18 @@ final readonly class FieldConfig
     {
         return new self(
             name: $name,
-            formatter: new PropertyFieldFormatter($class, $name),
+            provider: new Property($class, $name),
             sort: $sort,
         );
     }
 
     /**
      * @param non-empty-string $name
-     * @param FieldFormatter<TEntity> $formatter
+     * @param EntityValueProvider<TEntity> $provider
      */
     public function __construct(
         public string $name,
-        public FieldFormatter $formatter,
+        public EntityValueProvider $provider,
         public Sort $sort = new Sort(),
     ) {}
 }

@@ -20,6 +20,10 @@ final readonly class InMemoryRepository implements Repository
 
     public function query(Sort $sort = new Sort(), int $offset = 0, ?int $limit = null): iterable
     {
+        if (!$sort->isEmpty()) {
+            throw new \LogicException(\sprintf('Sorting is not supported in %s', __METHOD__));
+        }
+
         return \array_slice($this->entities, $offset, $limit);
     }
 }

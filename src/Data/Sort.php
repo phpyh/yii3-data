@@ -16,6 +16,11 @@ final readonly class Sort
         public array $fieldDirections = [],
     ) {}
 
+    public function isEmpty(): bool
+    {
+        return $this->fieldDirections === [];
+    }
+
     public function reverse(): self
     {
         return new self(array_map(

@@ -14,7 +14,7 @@
         {% for entity in entity_config.repository.query() %}
             <tr>
                 {% for field in entity_config.fields %}
-                    <td>{{ field.formatter.format(entity) }}</td>
+                    <td>{{ formatter.format(field.provider.getValue(entity)) ?? 'Unsupproted value' }}</td>
                 {% endfor %}
             </tr>
         {% endfor %}

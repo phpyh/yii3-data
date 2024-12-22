@@ -8,6 +8,7 @@ use Twig\Environment;
 use Twig\Error\Error;
 use Twig\Loader\FilesystemLoader;
 use Yii3DataStream\Data\EntityConfig;
+use Yii3DataStream\Data\Formatter;
 
 /**
  * @api
@@ -32,6 +33,11 @@ final readonly class Admin
                 'strict_variables' => true,
             ],
         ),
+        private Formatter $formatter = new Formatter\Formatters([
+            new Formatter\StringableFormatter(),
+            new Formatter\ScalarFormatter(),
+            new Formatter\DateTimeFormatter(),
+        ]),
     ) {
         $this->entitiesByName = array_column($entities, null, 'name');
     }
@@ -48,6 +54,7 @@ final readonly class Admin
 
         $this->twig->display('list.twig', [
             'entity_config' => $this->entitiesByName[$entityName],
+            'formatter' => $this->formatter,
         ]);
     }
 }

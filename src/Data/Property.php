@@ -7,9 +7,9 @@ namespace Yii3DataStream\Data;
 /**
  * @api
  * @template TEntity of object
- * @implements FieldFormatter<TEntity>
+ * @implements EntityValueProvider<TEntity>
  */
-final readonly class PropertyFieldFormatter implements FieldFormatter
+final readonly class Property implements EntityValueProvider
 {
     /**
      * @param class-string<TEntity> $_class
@@ -20,7 +20,7 @@ final readonly class PropertyFieldFormatter implements FieldFormatter
         private string $property,
     ) {}
 
-    public function format(object|array $entity): null|bool|int|float|string|\Stringable
+    public function getValue(object|array $entity): mixed
     {
         try {
             $property = new \ReflectionProperty($entity, $this->property);
@@ -28,6 +28,6 @@ final readonly class PropertyFieldFormatter implements FieldFormatter
             throw new PropertyDoesNotExist($entity::class, $this->property, $exception);
         }
 
-        return ensureCorrectFieldFormat($property->getValue($entity));
+        return $property->getValue($entity);
     }
 }
