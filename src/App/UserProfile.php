@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Yii3DataStream\App;
+namespace VUdaltsov\Yii3DataExperiment\App;
 
 /**
  * @api

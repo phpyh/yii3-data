@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Yii3DataStream\Admin;
+namespace VUdaltsov\Yii3DataExperiment\Admin;
 
 use Twig\Environment;
 use Twig\Error\Error;
 use Twig\Loader\FilesystemLoader;
-use Yii3DataStream\Data\EntityConfig;
-use Yii3DataStream\Data\Formatter;
+use VUdaltsov\Yii3DataExperiment\Data\EntityConfig;
+use VUdaltsov\Yii3DataExperiment\Data\Formatter;
 
 /**
  * @api

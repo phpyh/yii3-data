@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Yii3DataStream\Data\Formatter;
+namespace VUdaltsov\Yii3DataExperiment\Data\Formatter;
 
-use Yii3DataStream\Data\Formatter;
+use VUdaltsov\Yii3DataExperiment\Data\Formatter;
 
 /**
  * @api

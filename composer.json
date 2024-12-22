@@ -1,16 +1,12 @@
 {
-    "name": "typhoon/template",
-    "description": "Typhoon Template",
+    "name": "vudaltsov/yii3-data-experiment",
+    "description": "Yii3 Data Experiment",
     "license": "MIT",
     "type": "library",
     "authors": [
         {
             "name": "Valentin Udaltsov",
             "email": "udaltsov.valentin@gmail.com"
-        },
-        {
-            "name": "Typhoon Team",
-            "homepage": "https://github.com/orgs/typhoon-php/people"
         }
     ],
     "require": {
@@ -29,15 +25,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Yii3DataStream\\": "src/"
-        },
-        "files": [
-            "src/Data/ensureCorrectFieldFormat.php"
-        ]
+            "VUdaltsov\\Yii3DataExperiment\\": "src/"
+        }
     },
     "autoload-dev": {
         "psr-4": {
-            "Yii3DataStream\\": "tests/"
+            "VUdaltsov\\Yii3DataExperiment\\": "tests/"
         }
     },
     "config": {

@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Yii3DataStream\App;
+namespace VUdaltsov\Yii3DataExperiment\App;
 
-use Yii3DataStream\Admin\Admin;
-use Yii3DataStream\Data\CallableEntityValueProvider;
-use Yii3DataStream\Data\EntityConfig;
-use Yii3DataStream\Data\FieldConfig;
-use Yii3DataStream\Data\InMemoryRepository;
-use Yii3DataStream\Data\Property;
+use VUdaltsov\Yii3DataExperiment\Admin\Admin;
+use VUdaltsov\Yii3DataExperiment\Data\CallableEntityValueProvider;
+use VUdaltsov\Yii3DataExperiment\Data\EntityConfig;
+use VUdaltsov\Yii3DataExperiment\Data\FieldConfig;
+use VUdaltsov\Yii3DataExperiment\Data\InMemoryRepository;
+use VUdaltsov\Yii3DataExperiment\Data\Property;
 
 require_once __DIR__ . '/../../vendor/autoload.php';
 
