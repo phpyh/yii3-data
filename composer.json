@@ -38,8 +38,8 @@
             "bamarni/composer-bin-plugin": true,
             "ergebnis/composer-normalize": true
         },
-        "sort-packages": true,
-        "bump-after-update": "dev"
+        "bump-after-update": "dev",
+        "sort-packages": true
     },
     "extra": {
         "bamarni-bin": {
