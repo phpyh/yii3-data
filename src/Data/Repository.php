@@ -11,6 +11,7 @@ namespace VUdaltsov\Yii3DataExperiment\Data;
 interface Repository
 {
     /**
+     * @param non-negative-int $offset
      * @param ?non-negative-int $limit
      * @return iterable<TEntity>
      */
