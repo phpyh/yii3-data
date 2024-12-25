@@ -8,7 +8,7 @@ use Twig\Environment;
 use Twig\Error\Error;
 use Twig\Loader\FilesystemLoader;
 use VUdaltsov\Yii3DataExperiment\Data\EntityConfig;
-use VUdaltsov\Yii3DataExperiment\Data\Formatter;
+use VUdaltsov\Yii3DataExperiment\Formatter;
 
 /**
  * @api
@@ -33,7 +33,7 @@ final readonly class Admin
                 'strict_variables' => true,
             ],
         ),
-        private Formatter $formatter = new Formatter\Formatters([
+        private Formatter\Formatter $formatter = new Formatter\Formatters([
             new Formatter\StringableFormatter(),
             new Formatter\ScalarFormatter(),
             new Formatter\DateTimeFormatter(),
