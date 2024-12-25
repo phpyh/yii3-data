@@ -7,6 +7,13 @@ namespace VUdaltsov\Yii3DataExperiment\Data;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\TestWith;
 use PHPUnit\Framework\TestCase;
+use VUdaltsov\Yii3DataExperiment\Data\Filter\AndX;
+use VUdaltsov\Yii3DataExperiment\Data\Filter\Equals;
+use VUdaltsov\Yii3DataExperiment\Data\Filter\Field;
+use VUdaltsov\Yii3DataExperiment\Data\Filter\Greater;
+use VUdaltsov\Yii3DataExperiment\Data\Filter\Less;
+use VUdaltsov\Yii3DataExperiment\Data\Filter\None;
+use VUdaltsov\Yii3DataExperiment\Data\Filter\OrX;
 
 #[CoversClass(Repository::class)]
 abstract class RepositoryTestCase extends TestCase
@@ -24,6 +31,30 @@ abstract class RepositoryTestCase extends TestCase
         $actual = $repository->query();
 
         assertEntitiesEqual($entities, $actual);
+    }
+
+    /**
+     * @param list<array{0: int, 1: string}> $expected
+     */
+    #[TestWith([None::Filter, []])]
+    #[TestWith([new Equals(new Field(0), 1), [[1, 'a']]])]
+    #[TestWith([new Equals(3, new Field(0)), [[3, 'c'], [3, 'c_']]])]
+    #[TestWith([new Greater(new Field(0), 2), [[3, 'c'], [3, 'c_']]])]
+    #[TestWith([new Less(new Field(1), 'c'), [[1, 'a'], [2, 'b']]])]
+    #[TestWith([new AndX([new Equals(new Field(0), 1), new Equals(new Field(1), 'c')]), []])]
+    #[TestWith([new OrX([new Equals(new Field(0), 1), new Equals(new Field(1), 'b')]), [[1, 'a'], [2, 'b']]])]
+    final public function testFilter(Filter $filter, array $expected): void
+    {
+        $repository = $this->createRepository([
+            [1, 'a'],
+            [2, 'b'],
+            [3, 'c'],
+            [3, 'c_'],
+        ]);
+
+        $actual = $repository->query(filter: $filter);
+
+        assertEntitiesEqual($expected, $actual);
     }
 
     final public function testSort(): void

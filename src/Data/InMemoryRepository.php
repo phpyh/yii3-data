@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace VUdaltsov\Yii3DataExperiment\Data;
 
+use VUdaltsov\Yii3DataExperiment\Data\Filter\All;
+
 /**
  * @api
  * @template TEntity of array|object
@@ -22,9 +24,17 @@ final readonly class InMemoryRepository implements Repository
     /**
      * @return list<TEntity>
      */
-    public function query(Sort $sort = new Sort(), int $offset = 0, ?int $limit = null): array
-    {
+    public function query(
+        Filter $filter = All::Filter,
+        Sort $sort = new Sort(),
+        int $offset = 0,
+        ?int $limit = null,
+    ): array {
         $entities = $this->entities;
+
+        if ($filter !== All::Filter) {
+            $entities = array_filter($entities, $filter->accept(new CreateInMemoryFilter($this->accessor)));
+        }
 
         if (!$sort->isEmpty()) {
             usort($entities, $this->createComparator($sort));
