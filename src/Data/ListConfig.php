@@ -8,16 +8,14 @@ namespace VUdaltsov\Yii3DataExperiment\Data;
  * @api
  * @template TEntity of array|object
  */
-final readonly class EntityConfig
+final readonly class ListConfig
 {
     /**
      * @param non-empty-string $name
-     * @param Repository<TEntity> $repository
-     * @param ListConfig<TEntity> $list
+     * @param non-empty-list<ListColumnConfig<TEntity>> $columns
      */
     public function __construct(
         public string $name,
-        public Repository $repository,
-        public ListConfig $list,
+        public array $columns,
     ) {}
 }

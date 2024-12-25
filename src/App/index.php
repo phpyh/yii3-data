@@ -8,6 +8,7 @@ use VUdaltsov\Yii3DataExperiment\Admin\Admin;
 use VUdaltsov\Yii3DataExperiment\Data\EntityConfig;
 use VUdaltsov\Yii3DataExperiment\Data\InMemoryRepository;
 use VUdaltsov\Yii3DataExperiment\Data\ListColumnConfig;
+use VUdaltsov\Yii3DataExperiment\Data\ListConfig;
 use VUdaltsov\Yii3DataExperiment\Data\Sort;
 use VUdaltsov\Yii3DataExperiment\Data\SortDirection;
 
@@ -18,18 +19,22 @@ $userProfiles = new InMemoryRepository([
     new UserProfile(2, 'roxblnfk', 'Алексей', 'Гагарин', new \DateTimeImmutable('29.02.2222')),
 ]);
 $admin = new Admin([
-    new EntityConfig('Профиль', $userProfiles, [
-        ListColumnConfig::fromField('id', 'ID'),
-        ListColumnConfig::fromField('nickname', 'Никнейм'),
-        new ListColumnConfig(
-            name: 'Имя',
-            value: static fn(UserProfile $profile): string => "{$profile->firstName} {$profile->lastName}",
-            ascSort: new Sort([
-                'firstName' => SortDirection::Asc,
-                'lastName' => SortDirection::Asc,
-            ]),
-        ),
-        ListColumnConfig::fromField('birthday', 'День рождения'),
-    ]),
+    new EntityConfig(
+        name: 'Профиль',
+        repository: $userProfiles,
+        list: new ListConfig('Профили', [
+            ListColumnConfig::fromField('id', 'ID'),
+            ListColumnConfig::fromField('nickname', 'Никнейм'),
+            new ListColumnConfig(
+                name: 'Имя',
+                value: static fn(UserProfile $profile): string => "{$profile->firstName} {$profile->lastName}",
+                ascSort: new Sort([
+                    'firstName' => SortDirection::Asc,
+                    'lastName' => SortDirection::Asc,
+                ]),
+            ),
+            ListColumnConfig::fromField('birthday', 'День рождения'),
+        ]),
+    ),
 ]);
 $admin->displayList('Профиль');

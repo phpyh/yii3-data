@@ -19,13 +19,13 @@ final readonly class Admin
     /**
      * @var array<non-empty-string, EntityConfig<TEntity>>
      */
-    private array $entitiesByName;
+    private array $entityConfigsByName;
 
     /**
-     * @param list<EntityConfig<TEntity>> $entities
+     * @param list<EntityConfig<TEntity>> $entityConfigs
      */
     public function __construct(
-        array $entities = [],
+        array $entityConfigs = [],
         private Environment $twig = new Environment(
             new FilesystemLoader(__DIR__),
             [
@@ -39,7 +39,7 @@ final readonly class Admin
             new Formatter\DateTimeFormatter(),
         ]),
     ) {
-        $this->entitiesByName = array_column($entities, null, 'name');
+        $this->entityConfigsByName = array_column($entityConfigs, null, 'name');
     }
 
     /**
@@ -48,12 +48,12 @@ final readonly class Admin
      */
     public function displayList(string $entityName): void
     {
-        if (!isset($this->entitiesByName[$entityName])) {
-            throw new \RuntimeException(\sprintf('No entity "%s"', $entityName));
-        }
+        $entityConfig = $this->entityConfigsByName[$entityName]
+            ?? throw new \RuntimeException(\sprintf('No entity "%s"', $entityName));
 
         $this->twig->display('list.twig', [
-            'entity_config' => $this->entitiesByName[$entityName],
+            'list' => $entityConfig->list,
+            'entities' => $entityConfig->repository->query(),
             'formatter' => $this->formatter,
         ]);
     }
