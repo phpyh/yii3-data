@@ -12,12 +12,10 @@ final readonly class EntityConfig
 {
     /**
      * @param non-empty-string $name
-     * @param Repository<TEntity> $repository
      * @param ListConfig<TEntity> $list
      */
     public function __construct(
         public string $name,
-        public Repository $repository,
         public ListConfig $list,
     ) {}
 }

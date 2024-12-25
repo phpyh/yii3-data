@@ -16,6 +16,7 @@ final readonly class ListConfig
      */
     public function __construct(
         public string $name,
+        public OffsetPaginator|KeysetPaginator $paginator,
         public array $columns,
     ) {}
 }

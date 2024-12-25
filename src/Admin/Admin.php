@@ -8,6 +8,7 @@ use Twig\Environment;
 use Twig\Error\Error;
 use Twig\Loader\FilesystemLoader;
 use VUdaltsov\Yii3DataExperiment\Data\EntityConfig;
+use VUdaltsov\Yii3DataExperiment\Data\OffsetPaginator;
 use VUdaltsov\Yii3DataExperiment\Formatter;
 
 /**
@@ -53,7 +54,9 @@ final readonly class Admin
 
         $this->twig->display('list.twig', [
             'list' => $entityConfig->list,
-            'entities' => $entityConfig->repository->query(),
+            'entities' => $entityConfig->list->paginator instanceof OffsetPaginator
+                ? $entityConfig->list->paginator->queryPage()
+                : $entityConfig->list->paginator->queryNextPage(),
             'formatter' => $this->formatter,
         ]);
     }
