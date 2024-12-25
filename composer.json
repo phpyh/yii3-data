@@ -31,7 +31,10 @@
     "autoload-dev": {
         "psr-4": {
             "VUdaltsov\\Yii3DataExperiment\\": "tests/"
-        }
+        },
+        "files": [
+            "tests/Data/assertEntitiesEqual.php"
+        ]
     },
     "config": {
         "allow-plugins": {
