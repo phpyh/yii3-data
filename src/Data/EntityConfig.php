@@ -13,7 +13,7 @@ final readonly class EntityConfig
     /**
      * @param non-empty-string $name
      * @param Repository<TEntity> $repository
-     * @param non-empty-list<FieldConfig<TEntity>> $fields
+     * @param non-empty-list<ListColumnConfig<TEntity>> $fields
      */
     public function __construct(
         public string $name,

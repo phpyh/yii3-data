@@ -10,7 +10,7 @@ namespace VUdaltsov\Yii3DataExperiment\Data;
 final readonly class Sort
 {
     /**
-     * @param array<non-empty-string, SortDirection> $fieldDirections
+     * @param array<SortDirection> $fieldDirections
      */
     public function __construct(
         public array $fieldDirections = [],
