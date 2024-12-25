@@ -1,6 +1,6 @@
 # Yii3 Data Ideas
 
-My vision of the https://github.com/yiisoft/data component.
+My vision of the [yiisoft/data](https://github.com/yiisoft/data) component.
 
 ## Streams
 1. [YouTube](https://youtu.be/tVzcnenOAoo)
@@ -10,5 +10,5 @@ My vision of the https://github.com/yiisoft/data component.
 ## Installation
 
 ```shell
-composer create-project git@github.com:phpyh/yii3-data.git
+composer create-project phpyh/yii3-data --repository='{"type":"git","url":"git@github.com:phpyh/yii3-data.git"}' --stability=dev
 ```
