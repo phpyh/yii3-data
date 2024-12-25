@@ -14,14 +14,14 @@ use VUdaltsov\Yii3DataExperiment\Data\SortDirection;
 
 require_once __DIR__ . '/../../vendor/autoload.php';
 
-$userProfiles = new InMemoryRepository([
+$userProfiles = [
     new UserProfile(1, 'vudaltsov', 'Валентин', 'Удальцов', new \DateTimeImmutable('22.05.1994')),
     new UserProfile(2, 'roxblnfk', 'Алексей', 'Гагарин', new \DateTimeImmutable('29.02.2222')),
-]);
+];
 $admin = new Admin([
     new EntityConfig(
         name: 'Профиль',
-        repository: $userProfiles,
+        repository: new InMemoryRepository($userProfiles),
         list: new ListConfig('Профили', [
             ListColumnConfig::fromField('id', 'ID'),
             ListColumnConfig::fromField('nickname', 'Никнейм'),
