@@ -23,4 +23,9 @@ interface Repository
         int $offset = 0,
         ?int $limit = null,
     ): iterable;
+
+    /**
+     * @return non-negative-int
+     */
+    public function count(Filter $filter = All::Filter): int;
 }

@@ -44,6 +44,17 @@ final readonly class InMemoryRepository implements Repository
         return \array_slice($entities, $offset, $limit);
     }
 
+    public function count(Filter $filter = All::Filter): int
+    {
+        $entities = $this->entities;
+
+        if ($filter !== All::Filter) {
+            $entities = array_filter($entities, $filter->accept(new CreateInMemoryFilter($this->accessor)));
+        }
+
+        return \count($entities);
+    }
+
     /**
      * @return \Closure(TEntity, TEntity): int<-1, 1>
      */
