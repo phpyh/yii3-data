@@ -1,8 +1,8 @@
 {
-    "name": "vudaltsov/yii3-data-experiment",
-    "description": "Yii3 Data Experiment",
+    "name": "phpyh/yii3-data",
+    "description": "My vision of the yiisoft/data component.",
     "license": "MIT",
-    "type": "library",
+    "type": "project",
     "authors": [
         {
             "name": "Valentin Udaltsov",
@@ -41,7 +41,7 @@
             "bamarni/composer-bin-plugin": true,
             "ergebnis/composer-normalize": true
         },
-        "bump-after-update": "dev",
+        "bump-after-update": true,
         "sort-packages": true
     },
     "extra": {
