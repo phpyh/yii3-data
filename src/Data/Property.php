@@ -25,7 +25,7 @@ final readonly class Property implements EntityValueProvider
         try {
             $property = new \ReflectionProperty($entity, $this->property);
         } catch (\ReflectionException $exception) {
-            throw new PropertyDoesNotExist($entity::class, $this->property, $exception);
+            throw FieldDoesNotExist::property($entity::class, $this->property, $exception);
         }
 
         return $property->getValue($entity);
